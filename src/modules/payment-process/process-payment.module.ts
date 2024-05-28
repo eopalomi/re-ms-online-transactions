@@ -8,9 +8,13 @@ import { PaymentAdapter } from '@src/modules/payment-process/infraestructure/ada
 import { RabbitMQModule } from '@src/libs/rabbit-mq/rabbitmq.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
-  Recaudo,
-  RecaudoSchema,
-} from '@src/modules/payment-process/infraestructure/entities/payment.entity';
+  RecaudoPaymentLogEntity,
+  RecaudoPaymentLogSchema,
+} from './infraestructure/entities/recaudo-payment-log.entity';
+import {
+  RecaudoPaymentQueueEntity,
+  RecaudoPaymentQueueSchema,
+} from './infraestructure/entities/recaudo-payment-queue.entity';
 @Module({
   controllers: [PaymentProcessController],
   providers: [
@@ -33,16 +37,13 @@ import {
     ]),
     MongooseModule.forFeature([
       {
-        name: Recaudo.name,
-        schema: RecaudoSchema,
-        collection: 'recaudo_payment_log',
+        name: RecaudoPaymentLogEntity.name,
+        schema: RecaudoPaymentLogSchema,
       },
-      // ,
-      // {
-      //   name: Recaudo.name,
-      //   schema: RecaudoSchema,
-      //   collection: 'recaudo_payment_queue_dead',
-      // },
+      {
+        name: RecaudoPaymentQueueEntity.name,
+        schema: RecaudoPaymentQueueSchema,
+      },
     ]),
   ],
 })

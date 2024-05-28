@@ -1,7 +1,6 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-@Schema({ collection: 'recaudo_payment_log' })
 export class Recaudo extends Document {
   @Prop()
   codigoPlaca: string;
@@ -42,9 +41,6 @@ export class Recaudo extends Document {
   @Prop()
   codigoTransaccion: string;
 }
-
-// export const RecaudoSchema = SchemaFactory.createForClass(Recaudo);
-export const RecaudoSchema = SchemaFactory.createForClass(Recaudo);
 
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
