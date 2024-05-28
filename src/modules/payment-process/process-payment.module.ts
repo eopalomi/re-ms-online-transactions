@@ -6,7 +6,11 @@ import { CreatePaymentUseCase } from '@src/modules/payment-process/application/u
 import { PaymentRepository } from '@src/modules/payment-process/domain/repository/payment.repository';
 import { PaymentAdapter } from '@src/modules/payment-process/infraestructure/adapters/payment.adapter';
 import { RabbitMQModule } from '@src/libs/rabbit-mq/rabbitmq.module';
-
+import { MongooseModule } from '@nestjs/mongoose';
+import {
+  Recaudo,
+  RecaudoSchema,
+} from '@src/modules/payment-process/infraestructure/entities/payment.entity';
 @Module({
   controllers: [PaymentProcessController],
   providers: [
@@ -26,6 +30,19 @@ import { RabbitMQModule } from '@src/libs/rabbit-mq/rabbitmq.module';
         url: 'amqp://guest:guest@192.168.23.22:5673/transactions',
         requestingEntity: 'transaction',
       },
+    ]),
+    MongooseModule.forFeature([
+      {
+        name: Recaudo.name,
+        schema: RecaudoSchema,
+        collection: 'recaudo_payment_log',
+      },
+      // ,
+      // {
+      //   name: Recaudo.name,
+      //   schema: RecaudoSchema,
+      //   collection: 'recaudo_payment_queue_dead',
+      // },
     ]),
   ],
 })

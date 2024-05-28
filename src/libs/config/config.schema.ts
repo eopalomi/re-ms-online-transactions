@@ -7,4 +7,6 @@ export const configSchema = Joi.object({
   NAME_BD_CORE: Joi.required(),
   USER_BD_CORE: Joi.required(),
   PASS_BD_CORE: Joi.required(),
+  MONGO_CONNECTION: Joi.required(),
+  MONGO_DATABASE: Joi.required(),
 });

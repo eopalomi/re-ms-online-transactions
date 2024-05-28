@@ -1,3 +1,51 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+
+@Schema({ collection: 'recaudo_payment_log' })
+export class Recaudo extends Document {
+  @Prop()
+  codigoPlaca: string;
+
+  @Prop()
+  codigoCredito: string;
+
+  @Prop()
+  numeroTicket: string;
+
+  @Prop()
+  fechaRecaudo: string;
+
+  @Prop()
+  horaRecaudo: string;
+
+  @Prop()
+  cantidadVenta: number;
+
+  @Prop()
+  precioUnitario: number;
+
+  @Prop()
+  montoRecaudo: number;
+
+  @Prop()
+  montoBruto: number;
+
+  @Prop()
+  codigoEstacion: string;
+
+  @Prop()
+  descEstacion: string;
+
+  @Prop()
+  codigoEmpresa: string;
+
+  @Prop()
+  codigoTransaccion: string;
+}
+
+// export const RecaudoSchema = SchemaFactory.createForClass(Recaudo);
+export const RecaudoSchema = SchemaFactory.createForClass(Recaudo);
+
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'test', schema: 'frfacrec' })
