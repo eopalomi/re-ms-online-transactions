@@ -15,6 +15,7 @@ import {
   RecaudoPaymentQueueEntity,
   RecaudoPaymentQueueSchema,
 } from './infraestructure/entities/recaudo-payment-queue.entity';
+import { ScheduleModule } from '@nestjs/schedule';
 @Module({
   controllers: [PaymentProcessController],
   providers: [
@@ -27,6 +28,7 @@ import {
     CreatePaymentUseCase,
   ],
   imports: [
+    ScheduleModule.forRoot(),
     TypeOrmModule.forFeature([PaymentRequestPgEntity]),
     RabbitMQModule.register([
       {
