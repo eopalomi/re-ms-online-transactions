@@ -16,6 +16,7 @@ import {
   RecaudoPaymentQueueSchema,
 } from './infraestructure/entities/recaudo-payment-queue.entity';
 import { ScheduleModule } from '@nestjs/schedule';
+import { CronService } from './infraestructure/cron/cron.service';
 @Module({
   controllers: [PaymentProcessController],
   providers: [
@@ -26,6 +27,7 @@ import { ScheduleModule } from '@nestjs/schedule';
     },
     /* Use Cases */
     CreatePaymentUseCase,
+    CronService,
   ],
   imports: [
     ScheduleModule.forRoot(),
